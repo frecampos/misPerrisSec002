@@ -10,7 +10,31 @@ from django.contrib.auth import authenticate,logout,login as login_aut
 # importar libreria decoradora que permite evitar el ingreso de usuarios a las paginas web
 from django.contrib.auth.decorators import login_required, permission_required
 
+
+
 # Create your views here.
+
+#--------------------------------------------------------------
+import requests
+
+def consumir_api(request):
+    response = requests.get("http://127.0.0.1:8412/api/categorias/")
+    listado_categorias = response.json()
+
+    response = requests.get("http://127.0.0.1:8412/api/mascotas/")
+    listado_mascotas = response.json()
+
+    if request.POST:
+        nombre_mascota = request.POST.get("txtNombre")
+        response = requests.get("http://127.0.0.1:8412/api/buscar_mascota/"+nombre_mascota+"/")
+        listado_mascotas = response.json()
+        
+    contexto = {"categorias":listado_categorias,"mascotas":listado_mascotas}
+    return render(request,"consumir_api.html",contexto)
+
+#--------------------------------------------------------------
+
+
 def crear_usuario(request):
     if request.POST:
         nombre = request.POST.get("txtNombre")
@@ -123,6 +147,8 @@ def ficha_mascota(request, id):
     mascota = Mascota.objects.get(nombre=id) # select * from Mascota where nombre=id
     galeria = Galeria.objects.filter(mascota= mascota)
     contexto = {"mascota":mascota, "galeria":galeria}
+    cantidad = Galeria.objects.filter(mascota= mascota).count()
+    contexto["cantidad"]=cantidad
     return render(request,"ficha.html",contexto)
 
 @login_required(login_url='/login/')

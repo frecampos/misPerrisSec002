@@ -21,6 +21,7 @@ from django.conf.urls.static import static # ocupar una direccion estatica
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('misPerris.urls')),
+    path('',include('api.urls')),
 ]
 
 # incluir en el urlpatterns la ubicacion de MEDIA

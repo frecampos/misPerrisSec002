@@ -25,7 +25,6 @@
     </script>
     <!-- cabecera de la pagina -->
     <header>
-        <!-- contenedor que almacena el titulo MIS PERRIS y el Menu-->
         <div class="contenedor">
             <h1 class="icon-guidedog">Mis Perris</h1>
             <!-- control que permite visualizar el menu lateral (MOVIL)-->
@@ -36,7 +35,7 @@
                 <a href="{% url 'IND' %}">Inicio</a>
                 <a href="{% url 'GALE' %}">Galeria</a>
                 <a href="{% url 'FORMU' %}">Formulario</a>
-                <a href="">Quienes Somos</a>
+                <a href="{% url 'CONSUMIRAPI' %}">API REST</a>
                 <a href="">Contacto</a>
                 <a href="{% url 'FILTROCATE' 'Gatos' %}">Galeria Gatos</a>
 

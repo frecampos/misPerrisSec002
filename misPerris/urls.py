@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 # importar los controladores "views"
-from .views import insertar_galeria, devolver, admin_usuario, adoptar, modificacion,modificar_mascota, eliminar_mascota,crear_usuario, cerrar_sesion,login, filtro_cate,filtro_desc, buscar_nombre_mascota,filtro_categoria,index, galeria, formulario, registro,ficha_mascota
+from .views import consumir_api, insertar_galeria, devolver, admin_usuario, adoptar, modificacion,modificar_mascota, eliminar_mascota,crear_usuario, cerrar_sesion,login, filtro_cate,filtro_desc, buscar_nombre_mascota,filtro_categoria,index, galeria, formulario, registro,ficha_mascota
 
 # agregar las rutas hacia los controladores
 urlpatterns = [
@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin_usuario/',admin_usuario, name='ADMINUSUARIO'),
     path('devolver/<id>/',devolver,name='DEVOLVER'),
     path('insertar_galeria/',insertar_galeria, name='INSERTARG'),
+    path('consumir_api/',consumir_api,name='CONSUMIRAPI'),
 ]
 # {% url '<nombre>' %}

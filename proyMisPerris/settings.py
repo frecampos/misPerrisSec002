@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'misPerris', # incluir misPerris como una aplicacion en el interior del proyecto
+    'api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
